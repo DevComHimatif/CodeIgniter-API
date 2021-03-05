@@ -1,0 +1,17 @@
+version: "3.8"
+
+services: 
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: ci_postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+    volumes: 
+       - ci_postgresdata:/var/lib/postgresql/data
+    ports:
+        - 5432:5432
+
+volumes:
+  ci_postgresdata:
+    name: ci_postgresdata
