@@ -1,6 +1,13 @@
 version: "3.8"
 
 services: 
+  webserver:
+    build: .
+    ports: 
+      - "8080:80"
+    depends_on: 
+      - db
+
   db:
     image: postgres:latest
     environment:
@@ -9,8 +16,6 @@ services:
       POSTGRES_PASSWORD: example
     volumes: 
        - ci_postgresdata:/var/lib/postgresql/data
-    ports:
-        - 5432:5432
 
 volumes:
   ci_postgresdata:

@@ -31,8 +31,8 @@ class Database extends Config
 	 * @var array
 	 */
 	public $default = [
-		'DSN'      => 'Postgre://postgres:example@localhost:5432/ci_postgres?charset=utf8',
-		'hostname' => 'localhost',
+		'DSN'      => 'Postgre://postgres:example@db:5432/ci_postgres?charset=utf8',
+		'hostname' => 'db',
 		'username' => 'postgres',
 		'password' => 'example',
 		'database' => 'ci_postgres',

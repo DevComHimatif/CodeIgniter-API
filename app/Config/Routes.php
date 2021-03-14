@@ -35,7 +35,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->group('api', function($routes)
 {
-	$routes->group('book', function($routes)
+	$routes->group('books', function($routes)
 	{
 		$routes->get('test', 'BookController::test');
 		$routes->get('', 'BookController::getBook');

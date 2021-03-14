@@ -39,7 +39,7 @@ class BookController extends BaseController
     
     $this->bookModel->insert($newBook);
 
-    return $this->response->setStatusCode(200)
+    return $this->response->setStatusCode(201)
                           ->setJSON($newBook);
   }
 
