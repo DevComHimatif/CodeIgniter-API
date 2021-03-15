@@ -15,8 +15,12 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer self-update --2
 
 # config apache
-ADD config/apache.conf /etc/apache2/sites-available/000-default.conf
+COPY config/apache.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
+COPY config/wait-for-it.sh /wait-for-it.sh
+RUN chmod +x /wait-for-it.sh
+COPY config/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 # change work directory
 WORKDIR /var/www/html
@@ -36,4 +40,4 @@ RUN apt-get clean \
 EXPOSE 80
 
 # run apache daemon
-CMD ["bash", "/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+CMD ["/entrypoint.sh"]
